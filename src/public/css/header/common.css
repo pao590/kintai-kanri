@@ -1,0 +1,124 @@
+.header {
+    width: 100%;
+    max-width: 1512px;
+    height: 80px;
+    background: #000000;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header__logo {
+    top: 22px;
+    left: 25px;
+}
+
+.header__logo img {
+    width: 370px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+}
+
+.header-utilities {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+}
+
+.header-utilities nav {
+    display: flex;
+}
+
+.header-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav__item {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav__link {
+    display: inline-block;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 10px;
+    white-space: nowrap;
+}
+
+.header-nav__item form {
+    display: inline-block;
+    margin: 0;
+}
+
+.header-nav__item form button {
+    all: unset;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 10px;
+}
+
+
+
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .header__inner {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    .header__logo img {
+        width: 250px;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .header-utilities {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .header-utilities nav,
+    .header-nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .header-nav__link,
+    .header-nav__button,
+    .nav-link {
+        flex: none;
+        width: 100%;
+    }
+}
