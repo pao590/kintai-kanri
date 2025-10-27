@@ -34,7 +34,7 @@ class AttendanceDetailTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $clockIn = Carbon::now()->subHours(9); // afterWork と同じ
+        $clockIn = Carbon::now()->subHours(9);
         $attendance = Attendance::factory()->for($user)->afterWork()->create([
             'clock_in' => $clockIn,
         ]);
@@ -42,7 +42,6 @@ class AttendanceDetailTest extends TestCase
         $response = $this->get(route('attendance.show', $attendance->id));
 
         $response->assertStatus(200);
-        // ビューに合わせて Y年n月j日 形式で確認
         $response->assertSee($clockIn->format('Y年n月j日'));
     }
 

@@ -21,10 +21,8 @@ class AttendanceClockOutTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        // 出勤処理
         $this->post(route('attendance.clock_in'));
 
-        // 退勤処理
         $this->post(route('attendance.store'), ['action' => 'end_work']);
 
         $attendance = Attendance::where('user_id', $user->id)->first();
@@ -40,10 +38,8 @@ class AttendanceClockOutTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        // 出勤処理
         $this->post(route('attendance.clock_in'));
 
-        // 退勤処理
         $this->post(route('attendance.store'), ['action' => 'end_work']);
 
         $attendance = Attendance::where('user_id', $user->id)->first();

@@ -22,10 +22,8 @@ class AttendanceBreakTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        // 出勤
         $this->post(route('attendance.clock_in'));
 
-        // 休憩開始
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
 
         $attendance = Attendance::where('user_id', $user->id)->first();
@@ -43,11 +41,9 @@ class AttendanceBreakTest extends TestCase
 
         $this->post(route('attendance.clock_in'));
 
-        // 1回目の休憩開始・終了
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
         $this->post(route('attendance.store'), ['action' => 'rest_end']);
 
-        // 2回目の休憩開始
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
 
         $attendance = Attendance::where('user_id', $user->id)->first();
@@ -65,7 +61,6 @@ class AttendanceBreakTest extends TestCase
         $this->post(route('attendance.clock_in'));
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
 
-        // 休憩終了
         $this->post(route('attendance.store'), ['action' => 'rest_end']);
 
         $attendance = Attendance::where('user_id', $user->id)->first();
@@ -82,11 +77,9 @@ class AttendanceBreakTest extends TestCase
 
         $this->post(route('attendance.clock_in'));
 
-        // 1回目の休憩
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
         $this->post(route('attendance.store'), ['action' => 'rest_end']);
 
-        // 2回目の休憩
         $this->post(route('attendance.store'), ['action' => 'rest_start']);
         $this->post(route('attendance.store'), ['action' => 'rest_end']);
 

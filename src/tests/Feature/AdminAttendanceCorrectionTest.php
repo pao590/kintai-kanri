@@ -53,7 +53,7 @@ class AdminAttendanceCorrectionTest extends TestCase
 
     public function test_修正申請の詳細画面で内容が確認できる()
     {
-        $admin = $this->createAdmin(); // ← 修正
+        $admin = $this->createAdmin();
         $user = User::factory()->create();
 
         $attendance = Attendance::factory()->create([
@@ -67,7 +67,7 @@ class AdminAttendanceCorrectionTest extends TestCase
             'attendance_id' => $attendance->id,
             'reason' => '理由',
             'status' => 'pending',
-            'correction_content' => 'テスト修正内容', // ← 追加済みOK！
+            'correction_content' => 'テスト修正内容', 
         ]);
 
         $this->actingAs($admin, 'admin');

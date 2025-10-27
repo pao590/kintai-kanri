@@ -20,7 +20,6 @@ class AttendanceStatusTest extends TestCase
     {
         $user = User::factory()->create();
 
-        // 当日の勤怠がない状態 → before_work
         $this->actingAs($user);
 
         $response = $this->get(route('attendance.index'));
@@ -28,7 +27,6 @@ class AttendanceStatusTest extends TestCase
         $response->assertSee('勤務外');
     }
 
-    /** 出勤中ステータスが表示される */
     public function test_出勤中ステータスが表示される()
     {
         $user = User::factory()->create();
@@ -41,13 +39,12 @@ class AttendanceStatusTest extends TestCase
         $response->assertSee('出勤中');
     }
 
-    /** 休憩中ステータスが表示される */
+
     public function test_休憩中ステータスが表示される()
     {
         $user = User::factory()->create();
         $attendance = Attendance::factory()->working()->create(['user_id' => $user->id]);
 
-        // 未終了の休憩レコードを追加
         $attendance->rests()->create([
             'rest_start' => Carbon::now(),
             'rest_end' => null,
@@ -60,7 +57,6 @@ class AttendanceStatusTest extends TestCase
         $response->assertSee('休憩中');
     }
 
-    /** 退勤済ステータスが表示される */
     public function test_退勤済ステータスが表示される()
     {
         $user = User::factory()->create();
